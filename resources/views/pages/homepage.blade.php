@@ -1,128 +1,242 @@
 @extends('template.app')
 
 @section('content')
-<style>
-    .homepage {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    <link rel="stylesheet" href="{{ asset('assets/homepage.css') }}">
+    <div class="homepage">
+        <div class="homepage-inner">
+            <h1>Главная страница</h1>
+            <h2>Мои задачи</h2>
+            <div class="homepage-inner-content">
+                <div class="homepage-section">
+                    <h3><a class="section-title to-do" href="/">Нужно сделать</a></h3>
+                    <div class="section-inner section-to-do">
+                        <button class="btn-add">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="9" fill="#1C1D22" fill-opacity="0.08" />
+                                <g opacity="0.4">
+                                    <path d="M12 9H6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
+                                </g>
+                            </svg>
+                            Добавить новую задачу
+                        </button>
+                        <div class="section-items-all">
+                            <div class="section-item">
+                                <div class="item-title-btn">
+                                    <div class="item-titles">
+                                        <h2 class="title">Design new ui presentation</h2>
+                                        <h3 class="undertitle">Dribbble marketing</h3>
+                                    </div>
+                                    <button class="item-more-btn">
+                                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="26" height="26" rx="13" fill="white" />
+                                            <rect x="1" y="1" width="24" height="24" rx="12" stroke="#1C1D22"
+                                                stroke-opacity="0.1" stroke-width="2" />
+                                            <circle cx="17" cy="13" r="1" fill="#1C1D22" />
+                                            <circle cx="13" cy="13" r="1" fill="#1C1D22" />
+                                            <circle cx="9" cy="13" r="1" fill="#1C1D22" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-stats">
+                                        <svg width="14" height="10" viewBox="0 0 12 8" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.666656 0.666606C0.666656 0.298416 0.965133 -6.10352e-05 1.33332 -6.10352e-05H1.99999C2.36818 -6.10352e-05 2.66666 0.298416 2.66666 0.666606C2.66666 1.0348 2.36818 1.33327 1.99999 1.33327H1.33332C0.965133 1.33327 0.666656 1.0348 0.666656 0.666606ZM3.99999 0.666606C3.99999 0.298416 4.29847 -6.10352e-05 4.66666 -6.10352e-05H10.6667C11.0348 -6.10352e-05 11.3333 0.298416 11.3333 0.666606C11.3333 1.0348 11.0348 1.33327 10.6667 1.33327H4.66666C4.29847 1.33327 3.99999 1.0348 3.99999 0.666606ZM0.666656 3.99994C0.666656 3.63175 0.965133 3.33327 1.33332 3.33327H1.99999C2.36818 3.33327 2.66666 3.63175 2.66666 3.99994C2.66666 4.36813 2.36818 4.66661 1.99999 4.66661H1.33332C0.965133 4.66661 0.666656 4.36813 0.666656 3.99994ZM3.99999 3.99994C3.99999 3.63175 4.29847 3.33327 4.66666 3.33327H10.6667C11.0348 3.33327 11.3333 3.63175 11.3333 3.99994C11.3333 4.36813 11.0348 4.66661 10.6667 4.66661H4.66666C4.29847 4.66661 3.99999 4.36813 3.99999 3.99994ZM0.666656 7.33327C0.666656 6.96508 0.965133 6.66661 1.33332 6.66661H1.99999C2.36818 6.66661 2.66666 6.96508 2.66666 7.33327C2.66666 7.70146 2.36818 7.99994 1.99999 7.99994H1.33332C0.965133 7.99994 0.666656 7.70146 0.666656 7.33327ZM3.99999 7.33327C3.99999 6.96508 4.29847 6.66661 4.66666 6.66661H10.6667C11.0348 6.66661 11.3333 6.96508 11.3333 7.33327C11.3333 7.70146 11.0348 7.99994 10.6667 7.99994H4.66666C4.29847 7.99994 3.99999 7.70146 3.99999 7.33327Z"
+                                                fill="#1C1D22" />
+                                        </svg>
+                                        <p class="progress-title-text">Прогресс</p>
+                                    </div>
+                                    <p class="progress-counting"> {{0}} / {{10}}</p>
+                                </div>
+                                <div class="progress-bar">
 
-    .homepage-inner {
-        width: 100%;
-    }
-
-    h1 {
-        font-size: 28px;
-        margin-bottom: 20px;
-    }
-
-    h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-
-    .to-do {
-        color: red;
-    }
-
-    .in-progress {
-        color: orange;
-    }
-
-    .completed {
-        color: green;
-    }
-
-    .homepage-inner-content {
-        width: 100%;
-        display: flex;
-        gap: 100px;
-    }
-
-    .homepage-section {
-        width: 100%;
-    }
-
-    h3:has(a.section-title) {
-        margin-bottom: 20px;
-    }
-
-    .section-inner {
-        border: 2px dashed #1c1d2230;  
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        border-radius: 10px
-    }
-    .btn-add{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        gap: 10px;
-        margin: 10px;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 16px;
-    }
-</style>
-<div class="homepage">
-    <div class="homepage-inner">
-        <h1>Главная страница</h1>
-        <h2>Мои задачи</h2>
-        <div class="homepage-inner-content">
-            <div class="homepage-section">
-                <h3><a class="section-title to-do" href="/">Нужно сделать</a></h3>
-                <div class="section-inner">
-                    <button class="btn-add">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="9" cy="9" r="9" fill="#1C1D22" fill-opacity="0.08" />
-                            <g opacity="0.4">
-                                <path d="M12 9H6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
-                                <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
-                            </g>
-                        </svg>
-                        Добавить новую задачу
-                    </button>
-                    <div class="section-item">
-
+                                </div>
+                                <div class="item-footer">
+                                    <p class="item-date">
+                                        24 Янв 2025
+                                    </p>
+                                    <div class="item-footer-comments-attach">
+                                        <div class="comments">
+                                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.5 1.5C0.5 0.671573 1.17157 0 2 0H14C14.8284 0 15.5 0.671573 15.5 1.5V9.75C15.5 10.5784 14.8284 11.25 14 11.25H10.5607L8.53033 13.2803C8.23744 13.5732 7.76256 13.5732 7.46967 13.2803L5.43934 11.25H2C1.17157 11.25 0.5 10.5784 0.5 9.75V1.5ZM14 1.5H2V9.75H5.75C5.94891 9.75 6.13968 9.82902 6.28033 9.96967L8 11.6893L9.71967 9.96967C9.86032 9.82902 10.0511 9.75 10.25 9.75H14V1.5ZM3.5 4.125C3.5 3.71079 3.83579 3.375 4.25 3.375H11.75C12.1642 3.375 12.5 3.71079 12.5 4.125C12.5 4.53921 12.1642 4.875 11.75 4.875H4.25C3.83579 4.875 3.5 4.53921 3.5 4.125ZM3.5 7.125C3.5 6.71079 3.83579 6.375 4.25 6.375H8.75C9.16421 6.375 9.5 6.71079 9.5 7.125C9.5 7.53921 9.16421 7.875 8.75 7.875H4.25C3.83579 7.875 3.5 7.53921 3.5 7.125Z"
+                                                    fill="#1C1D22" />
+                                            </svg>
+                                            <p>2</p>
+                                        </div>
+                                        <div class="attach">
+                                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.5971 2.1818C13.0816 1.61948 12.1508 1.58483 11.5303 2.20533L5.45529 8.28033C5.29819 8.43744 5.29819 8.63757 5.45529 8.79467C5.6124 8.95178 5.81253 8.95178 5.96963 8.79467L10.9946 3.76967C11.2875 3.47678 11.7624 3.47678 12.0553 3.76967C12.3482 4.06257 12.3482 4.53744 12.0553 4.83033L7.03029 9.85533C6.2874 10.5982 5.13753 10.5982 4.39463 9.85533C3.65174 9.11244 3.65174 7.96257 4.39463 7.21967L10.4696 1.14467C11.6453 -0.0309737 13.5558 -0.0692286 14.6917 1.15616C15.8559 2.33247 15.8902 4.23368 14.6696 5.366L7.55529 12.4803C5.9124 14.1232 3.33753 14.1232 1.69463 12.4803C0.0517402 10.8374 0.0517402 8.26257 1.69463 6.61967L7.76963 0.544675C8.06252 0.251782 8.5374 0.251782 8.83029 0.544675C9.12319 0.837568 9.12319 1.31244 8.83029 1.60533L2.75529 7.68033C1.69819 8.73744 1.69819 10.3626 2.75529 11.4197C3.8124 12.4768 5.43753 12.4768 6.49463 11.4197L13.6196 4.29467C13.6273 4.28699 13.6352 4.27948 13.6432 4.27214C14.2055 3.75668 14.2401 2.82584 13.6196 2.20533C13.6119 2.19765 13.6044 2.18981 13.5971 2.1818Z"
+                                                    fill="#1C1D22" />
+                                            </svg>
+                                            <p>7</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="homepage-section">
-                <h3><a class="section-title in-progress" href="/">В процессе</a></h3>
-                <div class="section-inner">
-                    <button class="btn-add">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="9" cy="9" r="9" fill="#1C1D22" fill-opacity="0.08" />
-                            <g opacity="0.4">
-                                <path d="M12 9H6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
-                                <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
-                            </g>
-                        </svg>
-                        Добавить новую задачу
-                    </button>
+                <div class="homepage-section">
+                    <h3><a class="section-title in-progress" href="/">В процессе</a></h3>
+                    <div class="section-inner section-in-progress">
+                        <button class="btn-add">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="9" fill="#1C1D22" fill-opacity="0.08" />
+                                <g opacity="0.4">
+                                    <path d="M12 9H6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
+                                </g>
+                            </svg>
+                            Добавить новую задачу
+                        </button>
+                        <div class="section-items-all">
+                            <div class="section-item">
+                                <div class="item-title-btn">
+                                    <div class="item-titles">
+                                        <h2 class="title">Design new ui presentation</h2>
+                                        <h3 class="undertitle">Dribbble marketing</h3>
+                                    </div>
+                                    <button class="item-more-btn">
+                                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="26" height="26" rx="13" fill="white" />
+                                            <rect x="1" y="1" width="24" height="24" rx="12" stroke="#1C1D22"
+                                                stroke-opacity="0.1" stroke-width="2" />
+                                            <circle cx="17" cy="13" r="1" fill="#1C1D22" />
+                                            <circle cx="13" cy="13" r="1" fill="#1C1D22" />
+                                            <circle cx="9" cy="13" r="1" fill="#1C1D22" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-stats">
+                                        <svg width="14" height="10" viewBox="0 0 12 8" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.666656 0.666606C0.666656 0.298416 0.965133 -6.10352e-05 1.33332 -6.10352e-05H1.99999C2.36818 -6.10352e-05 2.66666 0.298416 2.66666 0.666606C2.66666 1.0348 2.36818 1.33327 1.99999 1.33327H1.33332C0.965133 1.33327 0.666656 1.0348 0.666656 0.666606ZM3.99999 0.666606C3.99999 0.298416 4.29847 -6.10352e-05 4.66666 -6.10352e-05H10.6667C11.0348 -6.10352e-05 11.3333 0.298416 11.3333 0.666606C11.3333 1.0348 11.0348 1.33327 10.6667 1.33327H4.66666C4.29847 1.33327 3.99999 1.0348 3.99999 0.666606ZM0.666656 3.99994C0.666656 3.63175 0.965133 3.33327 1.33332 3.33327H1.99999C2.36818 3.33327 2.66666 3.63175 2.66666 3.99994C2.66666 4.36813 2.36818 4.66661 1.99999 4.66661H1.33332C0.965133 4.66661 0.666656 4.36813 0.666656 3.99994ZM3.99999 3.99994C3.99999 3.63175 4.29847 3.33327 4.66666 3.33327H10.6667C11.0348 3.33327 11.3333 3.63175 11.3333 3.99994C11.3333 4.36813 11.0348 4.66661 10.6667 4.66661H4.66666C4.29847 4.66661 3.99999 4.36813 3.99999 3.99994ZM0.666656 7.33327C0.666656 6.96508 0.965133 6.66661 1.33332 6.66661H1.99999C2.36818 6.66661 2.66666 6.96508 2.66666 7.33327C2.66666 7.70146 2.36818 7.99994 1.99999 7.99994H1.33332C0.965133 7.99994 0.666656 7.70146 0.666656 7.33327ZM3.99999 7.33327C3.99999 6.96508 4.29847 6.66661 4.66666 6.66661H10.6667C11.0348 6.66661 11.3333 6.96508 11.3333 7.33327C11.3333 7.70146 11.0348 7.99994 10.6667 7.99994H4.66666C4.29847 7.99994 3.99999 7.70146 3.99999 7.33327Z"
+                                                fill="#1C1D22" />
+                                        </svg>
+                                        <p class="progress-title-text">Прогресс</p>
+                                    </div>
+                                    <p class="progress-counting"> {{0}} / {{10}}</p>
+                                </div>
+                                <div class="progress-bar">
+
+                                </div>
+                                <div class="item-footer">
+                                    <p class="item-date">
+                                        24 Янв 2025
+                                    </p>
+                                    <div class="item-footer-comments-attach">
+                                        <div class="comments">
+                                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.5 1.5C0.5 0.671573 1.17157 0 2 0H14C14.8284 0 15.5 0.671573 15.5 1.5V9.75C15.5 10.5784 14.8284 11.25 14 11.25H10.5607L8.53033 13.2803C8.23744 13.5732 7.76256 13.5732 7.46967 13.2803L5.43934 11.25H2C1.17157 11.25 0.5 10.5784 0.5 9.75V1.5ZM14 1.5H2V9.75H5.75C5.94891 9.75 6.13968 9.82902 6.28033 9.96967L8 11.6893L9.71967 9.96967C9.86032 9.82902 10.0511 9.75 10.25 9.75H14V1.5ZM3.5 4.125C3.5 3.71079 3.83579 3.375 4.25 3.375H11.75C12.1642 3.375 12.5 3.71079 12.5 4.125C12.5 4.53921 12.1642 4.875 11.75 4.875H4.25C3.83579 4.875 3.5 4.53921 3.5 4.125ZM3.5 7.125C3.5 6.71079 3.83579 6.375 4.25 6.375H8.75C9.16421 6.375 9.5 6.71079 9.5 7.125C9.5 7.53921 9.16421 7.875 8.75 7.875H4.25C3.83579 7.875 3.5 7.53921 3.5 7.125Z"
+                                                    fill="#1C1D22" />
+                                            </svg>
+                                            <p>2</p>
+                                        </div>
+                                        <div class="attach">
+                                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.5971 2.1818C13.0816 1.61948 12.1508 1.58483 11.5303 2.20533L5.45529 8.28033C5.29819 8.43744 5.29819 8.63757 5.45529 8.79467C5.6124 8.95178 5.81253 8.95178 5.96963 8.79467L10.9946 3.76967C11.2875 3.47678 11.7624 3.47678 12.0553 3.76967C12.3482 4.06257 12.3482 4.53744 12.0553 4.83033L7.03029 9.85533C6.2874 10.5982 5.13753 10.5982 4.39463 9.85533C3.65174 9.11244 3.65174 7.96257 4.39463 7.21967L10.4696 1.14467C11.6453 -0.0309737 13.5558 -0.0692286 14.6917 1.15616C15.8559 2.33247 15.8902 4.23368 14.6696 5.366L7.55529 12.4803C5.9124 14.1232 3.33753 14.1232 1.69463 12.4803C0.0517402 10.8374 0.0517402 8.26257 1.69463 6.61967L7.76963 0.544675C8.06252 0.251782 8.5374 0.251782 8.83029 0.544675C9.12319 0.837568 9.12319 1.31244 8.83029 1.60533L2.75529 7.68033C1.69819 8.73744 1.69819 10.3626 2.75529 11.4197C3.8124 12.4768 5.43753 12.4768 6.49463 11.4197L13.6196 4.29467C13.6273 4.28699 13.6352 4.27948 13.6432 4.27214C14.2055 3.75668 14.2401 2.82584 13.6196 2.20533C13.6119 2.19765 13.6044 2.18981 13.5971 2.1818Z"
+                                                    fill="#1C1D22" />
+                                            </svg>
+                                            <p>7</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="homepage-section">
-                <h3><a class="section-title completed" href="/">Выполнено</a></h3>
-                <div class="section-inner">
-                    <button class="btn-add">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="9" cy="9" r="9" fill="#1C1D22" fill-opacity="0.08" />
-                            <g opacity="0.4">
-                                <path d="M12 9H6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
-                                <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
-                            </g>
-                        </svg>
-                        Добавить новую задачу
-                    </button>
+                <div class="homepage-section">
+                    <h3><a class="section-title completed" href="/">Выполнено</a></h3>
+                    <div class="section-inner section-completed">
+                        <button class="btn-add">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="9" cy="9" r="9" fill="#1C1D22" fill-opacity="0.08" />
+                                <g opacity="0.4">
+                                    <path d="M12 9H6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
+                                </g>
+                            </svg>
+                            Добавить новую задачу
+                        </button>
+                        <div class="section-items-all">
+                            <div class="section-item">
+                                <div class="item-title-btn">
+                                    <div class="item-titles">
+                                        <h2 class="title">Design new ui presentation</h2>
+                                        <h3 class="undertitle">Dribbble marketing</h3>
+                                    </div>
+                                    <button class="item-more-btn">
+                                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="26" height="26" rx="13" fill="white" />
+                                            <rect x="1" y="1" width="24" height="24" rx="12" stroke="#1C1D22"
+                                                stroke-opacity="0.1" stroke-width="2" />
+                                            <circle cx="17" cy="13" r="1" fill="#1C1D22" />
+                                            <circle cx="13" cy="13" r="1" fill="#1C1D22" />
+                                            <circle cx="9" cy="13" r="1" fill="#1C1D22" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-stats">
+                                        <svg width="14" height="10" viewBox="0 0 12 8" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.666656 0.666606C0.666656 0.298416 0.965133 -6.10352e-05 1.33332 -6.10352e-05H1.99999C2.36818 -6.10352e-05 2.66666 0.298416 2.66666 0.666606C2.66666 1.0348 2.36818 1.33327 1.99999 1.33327H1.33332C0.965133 1.33327 0.666656 1.0348 0.666656 0.666606ZM3.99999 0.666606C3.99999 0.298416 4.29847 -6.10352e-05 4.66666 -6.10352e-05H10.6667C11.0348 -6.10352e-05 11.3333 0.298416 11.3333 0.666606C11.3333 1.0348 11.0348 1.33327 10.6667 1.33327H4.66666C4.29847 1.33327 3.99999 1.0348 3.99999 0.666606ZM0.666656 3.99994C0.666656 3.63175 0.965133 3.33327 1.33332 3.33327H1.99999C2.36818 3.33327 2.66666 3.63175 2.66666 3.99994C2.66666 4.36813 2.36818 4.66661 1.99999 4.66661H1.33332C0.965133 4.66661 0.666656 4.36813 0.666656 3.99994ZM3.99999 3.99994C3.99999 3.63175 4.29847 3.33327 4.66666 3.33327H10.6667C11.0348 3.33327 11.3333 3.63175 11.3333 3.99994C11.3333 4.36813 11.0348 4.66661 10.6667 4.66661H4.66666C4.29847 4.66661 3.99999 4.36813 3.99999 3.99994ZM0.666656 7.33327C0.666656 6.96508 0.965133 6.66661 1.33332 6.66661H1.99999C2.36818 6.66661 2.66666 6.96508 2.66666 7.33327C2.66666 7.70146 2.36818 7.99994 1.99999 7.99994H1.33332C0.965133 7.99994 0.666656 7.70146 0.666656 7.33327ZM3.99999 7.33327C3.99999 6.96508 4.29847 6.66661 4.66666 6.66661H10.6667C11.0348 6.66661 11.3333 6.96508 11.3333 7.33327C11.3333 7.70146 11.0348 7.99994 10.6667 7.99994H4.66666C4.29847 7.99994 3.99999 7.70146 3.99999 7.33327Z"
+                                                fill="#1C1D22" />
+                                        </svg>
+                                        <p class="progress-title-text">Прогресс</p>
+                                    </div>
+                                    <p class="progress-counting"> {{0}} / {{10}}</p>
+                                </div>
+                                <div class="progress-bar">
+
+                                </div>
+                                <div class="item-footer">
+                                    <p class="item-date">
+                                        24 Янв 2025
+                                    </p>
+                                    <div class="item-footer-comments-attach">
+                                        <div class="comments">
+                                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.5 1.5C0.5 0.671573 1.17157 0 2 0H14C14.8284 0 15.5 0.671573 15.5 1.5V9.75C15.5 10.5784 14.8284 11.25 14 11.25H10.5607L8.53033 13.2803C8.23744 13.5732 7.76256 13.5732 7.46967 13.2803L5.43934 11.25H2C1.17157 11.25 0.5 10.5784 0.5 9.75V1.5ZM14 1.5H2V9.75H5.75C5.94891 9.75 6.13968 9.82902 6.28033 9.96967L8 11.6893L9.71967 9.96967C9.86032 9.82902 10.0511 9.75 10.25 9.75H14V1.5ZM3.5 4.125C3.5 3.71079 3.83579 3.375 4.25 3.375H11.75C12.1642 3.375 12.5 3.71079 12.5 4.125C12.5 4.53921 12.1642 4.875 11.75 4.875H4.25C3.83579 4.875 3.5 4.53921 3.5 4.125ZM3.5 7.125C3.5 6.71079 3.83579 6.375 4.25 6.375H8.75C9.16421 6.375 9.5 6.71079 9.5 7.125C9.5 7.53921 9.16421 7.875 8.75 7.875H4.25C3.83579 7.875 3.5 7.53921 3.5 7.125Z"
+                                                    fill="#1C1D22" />
+                                            </svg>
+                                            <p>2</p>
+                                        </div>
+                                        <div class="attach">
+                                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.5971 2.1818C13.0816 1.61948 12.1508 1.58483 11.5303 2.20533L5.45529 8.28033C5.29819 8.43744 5.29819 8.63757 5.45529 8.79467C5.6124 8.95178 5.81253 8.95178 5.96963 8.79467L10.9946 3.76967C11.2875 3.47678 11.7624 3.47678 12.0553 3.76967C12.3482 4.06257 12.3482 4.53744 12.0553 4.83033L7.03029 9.85533C6.2874 10.5982 5.13753 10.5982 4.39463 9.85533C3.65174 9.11244 3.65174 7.96257 4.39463 7.21967L10.4696 1.14467C11.6453 -0.0309737 13.5558 -0.0692286 14.6917 1.15616C15.8559 2.33247 15.8902 4.23368 14.6696 5.366L7.55529 12.4803C5.9124 14.1232 3.33753 14.1232 1.69463 12.4803C0.0517402 10.8374 0.0517402 8.26257 1.69463 6.61967L7.76963 0.544675C8.06252 0.251782 8.5374 0.251782 8.83029 0.544675C9.12319 0.837568 9.12319 1.31244 8.83029 1.60533L2.75529 7.68033C1.69819 8.73744 1.69819 10.3626 2.75529 11.4197C3.8124 12.4768 5.43753 12.4768 6.49463 11.4197L13.6196 4.29467C13.6273 4.28699 13.6352 4.27948 13.6432 4.27214C14.2055 3.75668 14.2401 2.82584 13.6196 2.20533C13.6119 2.19765 13.6044 2.18981 13.5971 2.1818Z"
+                                                    fill="#1C1D22" />
+                                            </svg>
+                                            <p>7</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
