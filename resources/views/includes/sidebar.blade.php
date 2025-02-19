@@ -15,8 +15,8 @@
         gap: 10px;
     }
     .sidebar-nav-link {
-        border-radius: 100%;
-        padding: 13px;
+        margin: 13px;
+        height: 22px;
     }
 
     .sidebar {
@@ -30,7 +30,7 @@
 <div class="sidebar">
     <nav>
         <div class="sidebar-main-nav">
-            <a href="{{ route('view.homepage') }}" class="sidebar-nav-link">
+            <a href="{{ route('view.home') }}" class="sidebar-nav-link">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="1">
                         <path

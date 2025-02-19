@@ -9,7 +9,10 @@ class PageController extends Controller
     //PAGES:
     //HomePage
     public function showHomePage(){
-        return view('pages.homepage');
+        return view('pages.home');
+    }
+    public function showProjectPage(){
+        return view('pages.project');
     }
     public function showProfilePage(){
         return view('pages.profile');

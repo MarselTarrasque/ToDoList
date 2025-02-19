@@ -1,13 +1,13 @@
 @extends('template.app')
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('assets/homepage.css') }}">
-    <div class="homepage">
-        <div class="homepage-inner">
+    <link rel="stylesheet" href="{{ asset('assets/projectpage.css') }}">
+    <div class="projectpage">
+        <div class="projectpage-inner">
             <h1>Главная страница</h1>
-            <h2>Мои задачи</h2>
-            <div class="homepage-inner-content">
-                <div class="homepage-section">
+            <h2>Все задачи</h2>
+            <div class="projectpage-inner-content">
+                <div class="projectpage-section">
                     <h3><a class="section-title to-do" href="/">Нужно сделать</a></h3>
                     <div class="section-inner section-to-do">
                         <button class="btn-add">
@@ -18,7 +18,7 @@
                                     <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
                                 </g>
                             </svg>
-                            Добавить новую задачу
+                            Добавить новый проект
                         </button>
                         <div class="section-items-all">
                             <div class="section-item">
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="homepage-section">
+                <div class="projectpage-section">
                     <h3><a class="section-title in-progress" href="/">В процессе</a></h3>
                     <div class="section-inner section-in-progress">
                         <button class="btn-add">
@@ -94,7 +94,7 @@
                                     <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
                                 </g>
                             </svg>
-                            Добавить новую задачу
+                            Добавить новый проект
                         </button>
                         <div class="section-items-all">
                             <div class="section-item">
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="homepage-section">
+                <div class="projectpage-section">
                     <h3><a class="section-title completed" href="/">Выполнено</a></h3>
                     <div class="section-inner section-completed">
                         <button class="btn-add">
@@ -170,7 +170,7 @@
                                     <path d="M9 12L9 6" stroke="#1C1D22" stroke-width="2" stroke-linecap="round" />
                                 </g>
                             </svg>
-                            Добавить новую задачу
+                            Добавить новый проект
                         </button>
                         <div class="section-items-all">
                             <div class="section-item">

@@ -1,0 +1,58 @@
+.btn-add{
+
+}
+
+.btn{
+    display: none;
+}
+.btn1-label{
+    width: 126px;
+}
+.btn2-label{
+    width: 169px;
+}
+.btn + label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    gap: 10px;
+    padding:0;
+    padding-bottom: 10px;   
+    margin-bottom: 1px;
+}
+.btn:checked + label{
+    font-weight: bold;
+}
+
+
+
+.buttons-block{
+    display: flex;
+    justify-content: start;
+    align-items: center ;
+    gap: 30px;
+}
+.homepage {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    overflow-y:scroll;
+    height: calc(100vh - 60px);
+}
+.homepage-inner {
+    width: 100%;
+}
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
